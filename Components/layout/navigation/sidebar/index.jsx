@@ -1,0 +1,46 @@
+import Link from "next/link";
+import styles from "./sidebar.module.scss";
+
+const Sidebar = ({ isOpen, toggle }) => {
+  return (
+    <>
+      <div
+        className={styles.sidebar}
+        style={{
+          opacity: `${isOpen ? "1" : "0"}`,
+          top: ` ${isOpen ? "0" : "-100%"}`,
+        }}
+      >
+        <ul className={styles.linkList}>
+          <li className={styles.link}>
+            <Link href="/" onClick={toggle}>
+              <p>Acceuil</p>
+            </Link>
+          </li>
+          <li className={styles.link}>
+            <Link href="/confirmationReceipt" onClick={toggle}>
+              <p>Confirmation Réception</p>
+            </Link>
+          </li>
+          <li className={styles.link}>
+            <Link href="/meal" onClick={toggle}>
+              <p>Repas</p>
+            </Link>
+          </li>
+          <li className={styles.link}>
+            <Link href="/places" onClick={toggle}>
+              <p>Lieux</p>
+            </Link>
+          </li>
+          <li className={styles.link}>
+            <Link  className={styles.link} href="/weddingList" onClick={toggle}>
+              <p>Liste de mariage</p>
+            </Link>
+          </li>
+        </ul>
+      </div>
+    </>
+  );
+};
+
+export default Sidebar;

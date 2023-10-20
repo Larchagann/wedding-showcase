@@ -1,6 +1,6 @@
-import Navbar from "@/Components/layout/navbar";
 import "../styles/globals.css";
 import { Inter } from "next/font/google";
+import Navigation from "@/Components/layout/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,9 +12,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="fr">
-      <link href='https://fonts.googleapis.com/css?family=Allura' rel='stylesheet'></link>
       <body className={inter.className}>
-        <Navbar />
+        <link
+          href="https://fonts.googleapis.com/css?family=Allura"
+          rel="stylesheet"
+        />
+        <Navigation />
         {children}
       </body>
     </html>
