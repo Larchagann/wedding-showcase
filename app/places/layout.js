@@ -4,7 +4,7 @@ export default function RootLayout({ children }) {
   return (
     <>
       {children}
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

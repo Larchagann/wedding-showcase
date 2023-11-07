@@ -1,8 +1,10 @@
 import "../styles/globals.css";
 import { Inter } from "next/font/google";
 import Navigation from "@/Components/layout/navigation";
+import bg from "../images/background.jpg"
 
 const inter = Inter({ subsets: ["latin"] });
+const img = require("../images/background.jpg")
 
 export const metadata = {
   title: "Mariage de Yann & Lucie",
@@ -18,7 +20,10 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
         />
         <Navigation />
-        {children}
+        <main>
+          <img className="background" src={bg.src} alt="background"/>
+          <div className="page">{children}</div>
+        </main>
       </body>
     </html>
   );
