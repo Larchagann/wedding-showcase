@@ -1,0 +1,23 @@
+"use client";
+
+const { createTheme } = require("@mui/material");
+
+export const cardHeaderTitleTypographyProps = {
+  fontFamily: "allura",
+  fontSize: "28px",
+  fontWeight: "600",
+};
+
+export const cardHeaderMobileTitleTypographyProps = {
+  fontSize: "14px",
+  fontWeight: "600",
+};
+
+export const primaryTheme = createTheme({
+  palette: {
+    primary: {
+      main: "#daa520",
+      contrastText: "#ffffff",
+    },
+  },
+});

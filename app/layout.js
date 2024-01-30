@@ -1,10 +1,13 @@
 import "../styles/globals.css";
 import { Inter } from "next/font/google";
 import Navigation from "@/Components/layout/navigation";
-import bg from "../images/background.jpg"
+import bg from "../images/background.jpg";
+import banner from "../images/banner.png";
+import Context from "@/context/context";
+
+require("dotenv").config();
 
 const inter = Inter({ subsets: ["latin"] });
-const img = require("../images/background.jpg")
 
 export const metadata = {
   title: "Mariage de Yann & Lucie",
@@ -19,11 +22,16 @@ export default function RootLayout({ children }) {
           href="https://fonts.googleapis.com/css?family=Allura"
           rel="stylesheet"
         />
-        <Navigation />
-        <main>
-          <img className="background" src={bg.src} alt="background"/>
-          <div className="page">{children}</div>
-        </main>
+        <Context>
+          <Navigation />
+          <main>
+            <img className="background" src={bg.src} alt="background" />
+            <div className="page">
+              <img className="banner" src={banner.src} alt="banner" />
+              <div className="page-content">{children}</div>
+            </div>
+          </main>
+        </Context>
       </body>
     </html>
   );

@@ -32,11 +32,11 @@ const Sidebar = ({ isOpen, toggle }) => {
               <p>Lieux</p>
             </Link>
           </li>
-          <li className={styles.link}>
+          {/* <li className={styles.link}>
             <Link  className={styles.link} href="/weddingList" onClick={toggle}>
               <p>Liste de mariage</p>
             </Link>
-          </li>
+          </li> */}
         </ul>
       </div>
     </>

@@ -2,6 +2,7 @@
 import React from "react";
 import styles from "../../styles/card.module.scss";
 import { Card, CardContent, CardHeader } from "@mui/material";
+import { cardHeaderTitleTypographyProps } from "@/styles/muiTheme";
 // import { MapContainer, TileLayer, Marker } from "react-leaflet";
 
 export default function PlacesCard({ headerText, placeName, address, hour }) {
@@ -11,6 +12,7 @@ export default function PlacesCard({ headerText, placeName, address, hour }) {
         className={styles.cardHeader}
         title={headerText}
         action={hour}
+        titleTypographyProps={cardHeaderTitleTypographyProps}
       />
       <CardContent className={styles.cardContent}>
         <div className={styles.itemContent}>{placeName}</div>

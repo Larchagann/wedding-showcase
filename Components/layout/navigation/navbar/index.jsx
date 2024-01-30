@@ -31,11 +31,11 @@ const Navbar = ({ toggle }) => {
                   <p>Lieux</p>
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="/weddingList">
                   <p>Liste de mariage</p>
                 </Link>
-              </li>
+              </li> */}
             </ul>
             <button className={styles.sidebarButton} type="button" onClick={toggle}>
               <svg
