@@ -1,5 +1,3 @@
-import { dateDifferenceInMilliseconds } from "@/utils/utils";
-import { useState } from "react";
 import { useSessionStorage } from "usehooks-ts";
 
 export function useUser() {
@@ -21,10 +19,10 @@ export function useUser() {
       .then((response) => response.json())
       .then((data) => {
         setToken(data.access_token);
-        setUser(data.invitation);çç
+        setUser(data.invitation);
         setTimeout(() => {
           disconnect();
-        }, 3600000)
+        }, 3600000);
       })
       .catch((error) => console.log(error));
   };
@@ -34,17 +32,10 @@ export function useUser() {
     setToken(null);
   };
 
-  const checkSession = () => {
-    if (user != null && token != null) {
-    }
-  };
-
-  const loadSession = () => {};
-
   return {
     user: user,
     token: token,
     connect: connectUser,
-    disconnec: disconnect,
+    disconnect: disconnect,
   };
 }

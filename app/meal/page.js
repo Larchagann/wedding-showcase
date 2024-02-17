@@ -1,5 +1,10 @@
 import MealCard from "@/Components/MealCard";
-import ConnectionRootCard from "@/Components/connectionRootCard";
+import dynamic from "next/dynamic";
+
+const ConnectionRootCard = dynamic(
+  () => import("@/Components/connectionRootCard"),
+  { ssr: false }
+);
 
 export default function Meal() {
   return (

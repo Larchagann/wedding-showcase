@@ -1,5 +1,10 @@
-import ConnectionRootCard from "@/Components/connectionRootCard";
 import GuestCard from "@/Components/guestCard";
+import dynamic from "next/dynamic";
+
+const ConnectionRootCard = dynamic(
+  () => import("@/Components/connectionRootCard"),
+  { ssr: false }
+);
 
 export default function ConfirmationReceipt() {
   return (
