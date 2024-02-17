@@ -1,6 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import styles from "./navbar.module.scss";
+import LogoutButton from "@/Components/logoutButton";
+import { isMobile } from "@/utils/utils";
 
 const Navbar = ({ toggle }) => {
   return (
@@ -37,7 +39,8 @@ const Navbar = ({ toggle }) => {
                 </Link>
               </li> */}
             </ul>
-            <button className={styles.sidebarButton} type="button" onClick={toggle}>
+            {!isMobile() ? <LogoutButton/> : <></> }
+            <button className={styles.sidebarButton} type="button" onClick={toggle} on>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="25"

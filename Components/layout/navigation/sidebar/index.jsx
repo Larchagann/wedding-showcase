@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styles from "./sidebar.module.scss";
+import LogoutButton from "@/Components/logoutButton";
 
 const Sidebar = ({ isOpen, toggle }) => {
   return (
@@ -37,6 +38,9 @@ const Sidebar = ({ isOpen, toggle }) => {
               <p>Liste de mariage</p>
             </Link>
           </li> */}
+          <li className={styles.btnLogout}>
+           <LogoutButton/>
+          </li>
         </ul>
       </div>
     </>

@@ -13,12 +13,12 @@ export default function ConnectionRootCard({ headerText, children }) {
         verify(context.token, process.env.NEXT_PUBLIC_API_JWT_KEY);
       } catch (error) {
         console.log("SESSION EXPIRED");
-        context.disconnect();
+        context.logout();
       }
     }
   }, [context.user, context.token]);
 
-  return context.user != null || context.token != null ? (
+  return context.user != null && context.token != null ? (
     <>{children}</>
   ) : (
     <ConnectionCard headerText={headerText} />

@@ -21,13 +21,13 @@ export function useUser() {
         setToken(data.access_token);
         setUser(data.invitation);
         setTimeout(() => {
-          disconnect();
+          logout();
         }, 3600000);
       })
       .catch((error) => console.log(error));
   };
 
-  const disconnect = () => {
+  const logout = () => {
     setUser(null);
     setToken(null);
   };
@@ -36,6 +36,6 @@ export function useUser() {
     user: user,
     token: token,
     connect: connectUser,
-    disconnect: disconnect,
+    logout: logout,
   };
 }

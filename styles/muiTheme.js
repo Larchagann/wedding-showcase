@@ -21,3 +21,25 @@ export const primaryTheme = createTheme({
     },
   },
 });
+
+export const logoutBtnTheme = createTheme({
+  palette: {
+    primary: {
+      main: "#a60202",
+      contrastText: "#ffffff",
+    },
+  },
+});
+
+export const logoutBtnThemeMobile = createTheme({
+  typography: {
+    fontSize: 9,
+    //fontFamily:"allura"
+  },
+  palette: {
+    primary: {
+      main: "#a60202",
+      contrastText: "#ffffff",
+    },
+  },
+});
