@@ -10,7 +10,7 @@ export const checkValideAddressMail = (addressMail) => {
 // };
 
 export const isMobile = () => {
-  if (typeof navigator !== "undefined") {
+  if (typeof window !== "undefined") {
     const isMobileCheck = {
       Android: function () {
         return navigator.userAgent.match(/Android/i);
