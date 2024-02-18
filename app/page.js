@@ -7,8 +7,8 @@ export default function Home() {
   return (
     <>
       <div className="header">
-        {`Si vous êtes ici, c'est que Yann-David & Lucie ont le plaisir de vous
-        inviter à leur union le 20 juillet 2024 !!`}
+        Si vous êtes ici, c&apos;est que Yann-David & Lucie ont le plaisir de vous
+        inviter à leur union le 20 juillet 2024 !!
       </div>
       <Grid container spacing={2}>
         <Grid item xs={12} md={12}>
