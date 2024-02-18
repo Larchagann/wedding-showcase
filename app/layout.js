@@ -4,6 +4,7 @@ import Navigation from "@/Components/layout/navigation";
 import bg from "../images/background.jpg";
 import banner from "../images/banner.png";
 import Context from "@/context/context";
+import Banner from "@/Components/banner";
 
 require("dotenv").config();
 
@@ -27,7 +28,7 @@ export default function RootLayout({ children }) {
           <main>
             <img className="background" src={bg.src} alt="background" />
             <div className="page">
-              <img className="banner" src={banner.src} alt="banner" />
+              <Banner />
               <div className="page-content">{children}</div>
             </div>
           </main>

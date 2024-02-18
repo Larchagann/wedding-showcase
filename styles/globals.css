@@ -81,10 +81,6 @@ a {
   z-index: -1;
 }
 
-.banner {
-  width: 100%;
-}
-
 .header {
   display: flex;
   justify-content: center;
