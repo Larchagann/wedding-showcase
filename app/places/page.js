@@ -1,7 +1,4 @@
-"use client";
-
 import React from "react";
-//import ConnectionRootCard from "@/Components/connectionRootCard";
 import { Grid } from "@mui/material";
 import dynamic from "next/dynamic";
 import PlacesCards from "@/Components/placesCards";

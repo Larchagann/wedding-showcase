@@ -11,7 +11,10 @@ const Navbar = ({ toggle }) => {
         <div className={styles.container}>
           <div className={styles.navbar}>
             {/* <Logo /> */}
-            <div className={styles.logo}>Mariage de <br/>Yann & Lucie</div>
+            <div className={styles.logo}>
+              Mariage de <br />
+              Yann & Lucie
+            </div>
             <ul className={styles.linkList}>
               <li>
                 <Link href="/">
@@ -33,14 +36,19 @@ const Navbar = ({ toggle }) => {
                   <p>Lieux</p>
                 </Link>
               </li>
-              {/* <li>
+              <li>
                 <Link href="/weddingList">
                   <p>Liste de mariage</p>
                 </Link>
-              </li> */}
+              </li>
             </ul>
-            {!isMobile() ? <LogoutButton/> : <></> }
-            <button className={styles.sidebarButton} type="button" onClick={toggle} on>
+            {!isMobile() ? <LogoutButton /> : <></>}
+            <button
+              className={styles.sidebarButton}
+              type="button"
+              onClick={toggle}
+              on
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="25"

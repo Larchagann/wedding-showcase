@@ -33,13 +33,13 @@ const Sidebar = ({ isOpen, toggle }) => {
               <p>Lieux</p>
             </Link>
           </li>
-          {/* <li className={styles.link}>
-            <Link  className={styles.link} href="/weddingList" onClick={toggle}>
+          <li className={styles.link}>
+            <Link className={styles.link} href="/weddingList" onClick={toggle}>
               <p>Liste de mariage</p>
             </Link>
-          </li> */}
+          </li>
           <li className={styles.btnLogout}>
-           <LogoutButton/>
+            <LogoutButton />
           </li>
         </ul>
       </div>
