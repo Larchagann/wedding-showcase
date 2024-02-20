@@ -60,7 +60,8 @@ export default function GuestCard() {
   };
 
   const handleUpdate = () => {
-    guestList.updateGuestList(datas);
+    guestList.updateGuestList(datas, context.token);
+    context.updateUser()
   };
 
   return isMobile() ? (
