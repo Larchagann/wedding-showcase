@@ -32,8 +32,10 @@ export default function RootLayout({ children }) {
           <main>
             <img className="background" src={bg.src} alt="background" />
             <div className="page">
+              <div className="page-content">
               <Banner />
-              <div className="page-content">{children}</div>
+              <div className="page-container">{children}</div>
+              </div>
               <Footer />
             </div>
           </main>
