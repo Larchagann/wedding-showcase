@@ -4,6 +4,7 @@ import bg from "../images/background.jpg";
 import Context from "@/context/context";
 import Banner from "@/Components/banner";
 import dynamic from "next/dynamic";
+import Footer from "@/Components/layout/footer";
 
 require("dotenv").config();
 
@@ -33,6 +34,7 @@ export default function RootLayout({ children }) {
             <div className="page">
               <Banner />
               <div className="page-content">{children}</div>
+              <Footer />
             </div>
           </main>
         </Context>

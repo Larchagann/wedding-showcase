@@ -43,7 +43,7 @@ export default function Home() {
         </Grid>
         <Grid item xs={12} md={6}>
           <LinkCard link="/weddingList" headerText="Liste de mariage" 
-          contentText="Si vous avez coeur de nous aider à financer notre mariage !"/>
+          contentText="Si vous avez à coeur de nous aider à financer notre mariage !"/>
         </Grid>
       </Grid>
     </>

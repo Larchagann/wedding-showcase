@@ -15,7 +15,7 @@ const Sidebar = ({ isOpen, toggle }) => {
         <ul className={styles.linkList}>
           <li className={styles.link}>
             <Link href="/" onClick={toggle}>
-              <p>Acceuil</p>
+              <p>Accueil</p>
             </Link>
           </li>
           <li className={styles.link}>

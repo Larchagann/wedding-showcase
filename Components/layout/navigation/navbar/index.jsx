@@ -18,7 +18,7 @@ const Navbar = ({ toggle }) => {
             <ul className={styles.linkList}>
               <li>
                 <Link href="/">
-                  <p>Acceuil</p>
+                  <p>Accueil</p>
                 </Link>
               </li>
               <li>

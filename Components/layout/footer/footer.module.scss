@@ -1,0 +1,11 @@
+.footer {
+    height: 2rem;
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    .icon {
+        margin-right: 0.25rem;
+    }
+}
