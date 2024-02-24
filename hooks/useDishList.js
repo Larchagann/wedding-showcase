@@ -81,11 +81,11 @@ export function useDishList() {
     if (deleteList.length > 0) {
       for (let item of deleteList) {
         const isDelete = await deleteDish(item, token);
-        if (isDelete == false)
+        if (isDelete == true)
           oldData.filter((elmt) => elmt.idDish != item.idDish);
       }
-      setDatas(oldData);
     }
+    setDatas(oldData);
   };
 
   return {
