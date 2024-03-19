@@ -4,13 +4,16 @@ import bg from "../images/background.jpg";
 import Context from "@/context/context";
 import Banner from "@/Components/banner";
 import dynamic from "next/dynamic";
-import Footer from "@/Components/layout/footer";
 
 require("dotenv").config();
 
 const inter = Inter({ subsets: ["latin"] });
 
 const Navigation = dynamic(() => import("@/Components/layout/navigation"), {
+  ssr: false,
+});
+
+const Footer = dynamic(() => import("@/Components/layout/footer"), {
   ssr: false,
 });
 
