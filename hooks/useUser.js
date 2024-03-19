@@ -4,8 +4,8 @@ export function useUser() {
   const [user, setUser] = useSessionStorage("user", null);
   const [token, setToken] = useSessionStorage("token", null);
 
-  const connectUser = (addressMail) => {
-    fetch(process.env.NEXT_PUBLIC_API_URL + `auth/login`, {
+  const connectUser = async (addressMail) => {
+    return await fetch(process.env.NEXT_PUBLIC_API_URL + `auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -20,8 +20,12 @@ export function useUser() {
           console.log("LOGOUT");
           logout();
         }, 3600000);
+        return data;
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error);
+        return false;
+      });
   };
 
   const putUser = async () => {
