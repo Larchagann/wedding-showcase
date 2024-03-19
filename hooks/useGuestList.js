@@ -52,6 +52,7 @@ export function useGuestList() {
   };
 
   const updateGuestList = async (guestList, token) => {
+    let isOk = true;
     const oldData = datas;
     for (let guest of guestList) {
       const newData = await putGuest(guest, token);
@@ -60,8 +61,10 @@ export function useGuestList() {
           if (item.idGuest == guest.idGuest) return newData;
           else return item;
         });
+      else isOk = false;
     }
     setDatas(oldData);
+    return isOk;
   };
 
   return {

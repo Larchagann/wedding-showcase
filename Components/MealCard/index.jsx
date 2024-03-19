@@ -2,10 +2,13 @@
 import React, { useEffect, useState } from "react";
 import styles from "../../styles/card.module.scss";
 import {
+  Alert,
+  Box,
   Button,
   Card,
   CardContent,
   CardHeader,
+  Collapse,
   Paper,
   Table,
   TableBody,
@@ -35,6 +38,8 @@ export default function MealCard() {
   const [datas, setDatas] = useState(null);
   const [dishTypeDatas, setDishTypeDatas] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
+  const [openSuccessAlert, setOpenSuccessAlert] = useState(false);
+  const [openErrorAlert, setOpenErrorAlert] = useState(false);
 
   useEffect(
     (
@@ -64,12 +69,13 @@ export default function MealCard() {
   const handleModal = () => setModalOpen(!modalOpen);
 
   const addDish = (dish) => {
+    console.log("Dish", dish, dishTypeDatas)
     const newDatas = datas;
     newDatas.push({
       ...dish,
       dishType: {
         idDishType: dish.dishType,
-        label: dishTypeDatas[dish.dishType - 1].label,
+        label: dishTypeDatas.find(item => item.idDishType == dish.dishType).label,
       },
     });
     setDatas(newDatas);
@@ -86,14 +92,25 @@ export default function MealCard() {
     setDatas(newDatas);
   };
 
-  const handleUpdate = () => {
-    dishList.updateDishList(
+  const handleUpdate = async () => {
+    const isSuccess = dishList.updateDishList(
       datas.map((item) => ({
         ...item,
         invitation: context.user.idInvitation,
       })),
       context.token
     );
+    if (isSuccess) {
+      setOpenSuccessAlert(true);
+      setTimeout(() => {
+        setOpenSuccessAlert(false);
+      }, 5000);
+    } else {
+      setOpenErrorAlert(true);
+      setTimeout(() => {
+        setOpenErrorAlert(false);
+      }, 30000);
+    }
   };
 
   return isMobile() ? (
@@ -154,6 +171,20 @@ export default function MealCard() {
                   </CardContent>
                 </Card>
               ))}
+              <Box sx={{ width: "100%" }}>
+                <Collapse in={openSuccessAlert}>
+                  <Alert sx={{ mb: 2 }} severity="success">
+                    Modification enregistrée !
+                  </Alert>
+                </Collapse>
+              </Box>
+              <Box sx={{ width: "100%" }}>
+                <Collapse in={openErrorAlert} severity="error">
+                  <Alert sx={{ mb: 2 }}>
+                    Erreur, réessayez ou contactez l'administrateur !
+                  </Alert>
+                </Collapse>
+              </Box>
               <div className={styles.btnValiderMobile}>
                 <ThemeProvider theme={primaryTheme}>
                   <Button onClick={handleUpdate} variant="contained">
@@ -250,6 +281,20 @@ export default function MealCard() {
                     </Table>
                   </TableContainer>
                 </div>
+                <Box sx={{ width: "100%" }}>
+                  <Collapse in={openSuccessAlert}>
+                    <Alert sx={{ mb: 2 }} severity="success">
+                      Modification enregistrée !
+                    </Alert>
+                  </Collapse>
+                </Box>
+                <Box sx={{ width: "100%" }}>
+                  <Collapse in={openErrorAlert} severity="error">
+                    <Alert sx={{ mb: 2 }}>
+                      Erreur, réessayez ou contactez l'administrateur !
+                    </Alert>
+                  </Collapse>
+                </Box>
                 <div className={styles.btnValider}>
                   <ThemeProvider theme={primaryTheme}>
                     <Button onClick={handleUpdate} variant="outlined">

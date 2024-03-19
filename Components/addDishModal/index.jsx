@@ -50,12 +50,12 @@ export default function AddDishModal({
   };
 
   const handleClickValidate = () => {
+    
     if (
       !checkValue(dish.label) &&
       !checkValue(dish.quantity) &&
       !checkValue(dish.dishType)
     ) {
-
       addDish({
         label: dish.label,
         quantity: dish.quantity,

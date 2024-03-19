@@ -62,6 +62,7 @@ export function useDishList() {
   };
 
   const updateDishList = async (dataList, token) => {
+    let isOk = true;
     const oldData = datas;
     const createList = dataList.filter(
       (item) => item.idDish == null || item.idDish == undefined
@@ -76,6 +77,7 @@ export function useDishList() {
       for (let item of createList) {
         const newData = await postDish(item, token);
         if (newData != false) oldData.push(newData);
+        else isOk = false;
       }
     }
     if (deleteList.length > 0) {
@@ -83,9 +85,11 @@ export function useDishList() {
         const isDelete = await deleteDish(item, token);
         if (isDelete == true)
           oldData.filter((elmt) => elmt.idDish != item.idDish);
+        else isOk = false;
       }
     }
     setDatas(oldData);
+    return isOk;
   };
 
   return {
