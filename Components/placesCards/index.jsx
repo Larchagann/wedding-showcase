@@ -29,7 +29,7 @@ export default function PlacesCards() {
               headerText={"Mairie"}
               placeName={"HÔTEL DE VILLE"}
               address={"QUAI LAMARTINE 71000 MÂCON"}
-              hour={"11h"}
+              hour={"10h"}
             />
           </Grid>
           <Grid item xs={12} md={6}>
