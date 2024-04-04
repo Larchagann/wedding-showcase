@@ -16,7 +16,7 @@ import {
 
 export default function ThemeCard() {
   const handleClick = () => {
-    const jackpotLink = "https://pin.it/JnGWeEhdv";
+    const jackpotLink = "https://pin.it/7xEa41HNh";
 
     if (window !== undefined) {
       window.open(jackpotLink, "_blank");
