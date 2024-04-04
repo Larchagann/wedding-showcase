@@ -37,6 +37,7 @@ export default function PlacesCards() {
               headerText="Réception"
               placeName="SALLE DES FÊTES DE SENNECÉ"
               address="RUE VRÉMONTOISE 71000 MÂCON"
+              hour={"19h"}
             />
           </Grid>
         </>

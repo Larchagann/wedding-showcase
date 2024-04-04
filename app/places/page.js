@@ -30,6 +30,7 @@ export default function Places() {
             headerText={"Vin d'honneur"}
             placeName={"ESPACE PLEIN ÉVANGILE"}
             address={"139 RUE DU CONCOURS 71000 MÂCON"}
+            hour={"16:45"}
           />
         </Grid>
       </Grid>
