@@ -113,7 +113,7 @@ export default function GuestCard() {
                 </div>
                 <div className={styles.mobileLine}>
                   <div className={styles.mobileLineLabel}>
-                    Besoin d'un hébergement{" "}
+                    Dors dans la salle de réception{" "}
                   </div>
                   <div className={styles.mobileLineButton}>
                     <ChoiceButton
@@ -130,7 +130,9 @@ export default function GuestCard() {
           ))}
           <Box sx={{ width: "100%" }}>
             <Collapse in={openSuccessAlert}>
-              <Alert sx={{ mb: 2 }} severity="success">Modification enregistrée !</Alert>
+              <Alert sx={{ mb: 2 }} severity="success">
+                Modification enregistrée !
+              </Alert>
             </Collapse>
           </Box>
           <Box sx={{ width: "100%" }}>
@@ -172,8 +174,9 @@ export default function GuestCard() {
                         <TableCell align="center">Prénom </TableCell>
                         <TableCell align="center">Sera là</TableCell>
                         <TableCell align="center">
-                          Besoin d'un <br />
-                          hébergement
+                          Dors dans la salle
+                          <br />
+                          de réception
                         </TableCell>
                       </TableRow>
                     </TableHead>
@@ -214,17 +217,20 @@ export default function GuestCard() {
                 </TableContainer>
               </div>
               <Box sx={{ width: "100%" }}>
-            <Collapse in={openSuccessAlert}>
-              <Alert sx={{ mb: 2 }} severity="success">Modification enregistrée !</Alert>
-            </Collapse>
-          </Box>
-          <Box sx={{ width: "100%" }}>
-            <Collapse in={openErrorAlert} severity="error">
-              <Alert sx={{ mb: 2 }}>
-                Erreur, rechargez la page puis réessayez ou contactez l'administrateur !
-              </Alert>
-            </Collapse>
-          </Box>
+                <Collapse in={openSuccessAlert}>
+                  <Alert sx={{ mb: 2 }} severity="success">
+                    Modification enregistrée !
+                  </Alert>
+                </Collapse>
+              </Box>
+              <Box sx={{ width: "100%" }}>
+                <Collapse in={openErrorAlert} severity="error">
+                  <Alert sx={{ mb: 2 }}>
+                    Erreur, rechargez la page puis réessayez ou contactez
+                    l'administrateur !
+                  </Alert>
+                </Collapse>
+              </Box>
               <div className={styles.btnValider}>
                 <ThemeProvider theme={primaryTheme}>
                   <Button onClick={handleUpdate} variant="outlined">
