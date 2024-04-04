@@ -16,8 +16,7 @@ import {
 
 export default function ThemeCard() {
   const handleClick = () => {
-    const jackpotLink =
-      "https://pin.it/JnGWeEhdv";
+    const jackpotLink = "https://pin.it/JnGWeEhdv";
 
     if (window !== undefined) {
       window.open(jackpotLink, "_blank");
@@ -37,15 +36,16 @@ export default function ThemeCard() {
         - Costume décontracté
         <br />
         - Floral et/ou couleur vive
-        <br/><br/>
+        <br />
+        <br />
         <div className={styles.alertRed}>Tenues blanches à proscrire !</div>
         <br />
-        <div className={styles.itemCenterContent}>
-        <ThemeProvider theme={primaryTheme}>
-          <Button variant="contained" onClick={handleClick}>
-            {`cliquez ici Pour + d'idées, Allez voir notre tableau Pinterest !`}
-          </Button>
-        </ThemeProvider>
+        <div className={styles.itemCenterContent2}>
+          <ThemeProvider theme={primaryTheme}>
+            <Button variant="contained" onClick={handleClick}>
+              {`cliquez ici Pour + d'idées, Allez voir notre tableau Pinterest !`}
+            </Button>
+          </ThemeProvider>
         </div>
       </CardContent>
     </Card>
