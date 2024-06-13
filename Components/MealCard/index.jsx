@@ -35,7 +35,6 @@ export default function MealCard() {
   const dishList = useDishList();
   const dishTypeList = useDishTypeList();
 
-  const [datas, setDatas] = useState(null);
   const [dishTypeDatas, setDishTypeDatas] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [openSuccessAlert, setOpenSuccessAlert] = useState(false);
@@ -53,13 +52,6 @@ export default function MealCard() {
   );
 
   useEffect(
-    (dishListDatas = dishList.datas) => {
-      setDatas(dishListDatas);
-    },
-    [dishList.datas]
-  );
-
-  useEffect(
     (dishTypeListDatas = dishTypeList.datas) => {
       setDishTypeDatas(dishTypeListDatas);
     },
@@ -69,37 +61,25 @@ export default function MealCard() {
   const handleModal = () => setModalOpen(!modalOpen);
 
   const addDish = (dish) => {
-    console.log("Dish", dish, dishTypeDatas)
-    const newDatas = datas;
-    newDatas.push({
-      ...dish,
-      dishType: {
-        idDishType: dish.dishType,
-        label: dishTypeDatas.find(item => item.idDishType == dish.dishType).label,
-      },
-    });
-    setDatas(newDatas);
+    const isSuccess = dishList.createDish(
+      { ...dish, invitation: context.user.idInvitation },
+      context.token
+    );
+    if (isSuccess) {
+      setOpenSuccessAlert(true);
+      setTimeout(() => {
+        setOpenSuccessAlert(false);
+      }, 5000);
+    } else {
+      setOpenErrorAlert(true);
+      setTimeout(() => {
+        setOpenErrorAlert(false);
+      }, 30000);
+    }
   };
 
   const deleteDish = (dish) => {
-    let newDatas = datas;
-    newDatas = newDatas.filter(
-      (item) =>
-        item.label != dish.label &&
-        item.quantity != dish.quantity &&
-        item.dishType != dish.dishType
-    );
-    setDatas(newDatas);
-  };
-
-  const handleUpdate = async () => {
-    const isSuccess = dishList.updateDishList(
-      datas.map((item) => ({
-        ...item,
-        invitation: context.user.idInvitation,
-      })),
-      context.token
-    );
+    const isSuccess = dishList.deleteDish(dish, context.token);
     if (isSuccess) {
       setOpenSuccessAlert(true);
       setTimeout(() => {
@@ -141,13 +121,10 @@ export default function MealCard() {
           ) : (
             <></>
           )}
-          {datas != null && datas.length > 0 ? (
+          {dishList.datas != null && dishList.datas.length > 0 ? (
             <>
-              {datas.map((data) => (
-                <Card
-                  key={`${data.label}${data.quantity}${data.dishType}`}
-                  className={styles.card}
-                >
+              {dishList.datas.map((data) => (
+                <Card key={`${data.idDish}`} className={styles.card}>
                   <CardHeader
                     className={styles.cardHeaderMobile}
                     title={data.label}
@@ -156,7 +133,13 @@ export default function MealCard() {
                   <CardContent className={styles.cardContent}>
                     <div className={styles.mobileLine}>
                       <div className={styles.mobileLineLabel}>
-                        {`${data.dishType.label} - ${data.quantity} part`}
+                        {`${
+                          data.dishType.label != null
+                            ? data.dishType.label
+                            : dishTypeList.datas.find(
+                                (item) => item.idDishType == data.dishType
+                              ).label
+                        } - ${data.quantity} part`}
                       </div>
                       <div className={styles.mobileLineButton}>
                         <MdOutlineRemoveCircleOutline
@@ -185,13 +168,6 @@ export default function MealCard() {
                   </Alert>
                 </Collapse>
               </Box>
-              <div className={styles.btnValiderMobile}>
-                <ThemeProvider theme={primaryTheme}>
-                  <Button onClick={handleUpdate} variant="contained">
-                    Enregistrer
-                  </Button>
-                </ThemeProvider>
-              </div>
             </>
           ) : (
             <Card className={styles.card}>
@@ -234,7 +210,7 @@ export default function MealCard() {
                 <></>
               )}
             </div>
-            {datas != null && datas.length > 0 ? (
+            {dishList.datas != null && dishList.datas.length > 0 ? (
               <>
                 <div className={styles.table}>
                   <TableContainer component={Paper}>
@@ -248,9 +224,9 @@ export default function MealCard() {
                         </TableRow>
                       </TableHead>
                       <TableBody>
-                        {datas.map((data) => (
+                        {dishList.datas.map((data) => (
                           <TableRow
-                            key={`${data.label}${data.quantity}${data.dishType}`}
+                            key={`${data.idDish}`}
                             sx={{
                               "&:last-child td, &:last-child th": { border: 0 },
                             }}
@@ -264,7 +240,11 @@ export default function MealCard() {
                             </TableCell>
                             <TableCell align="center">{`${data.quantity} part`}</TableCell>
                             <TableCell align="center">
-                              {data.dishType.label}
+                              {data.dishType.label != null
+                                ? data.dishType.label
+                                : dishTypeList.datas.find(
+                                    (item) => item.idDishType == data.dishType
+                                  ).label}
                             </TableCell>
                             <TableCell align="center">
                               <MdOutlineRemoveCircleOutline
@@ -295,13 +275,6 @@ export default function MealCard() {
                     </Alert>
                   </Collapse>
                 </Box>
-                <div className={styles.btnValider}>
-                  <ThemeProvider theme={primaryTheme}>
-                    <Button onClick={handleUpdate} variant="outlined">
-                      Enregistrer
-                    </Button>
-                  </ThemeProvider>
-                </div>
               </>
             ) : (
               <div className={styles.itemCenterContent}>

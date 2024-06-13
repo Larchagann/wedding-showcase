@@ -92,9 +92,25 @@ export function useDishList() {
     return isOk;
   };
 
+  const createDish = async (dish, token) => {
+    const newData = await postDish(dish, token);
+    if (newData != false) {
+      setDatas((prev) => [...prev, newData]);
+      return true;
+    } else return false;
+  };
+
+  const delDish = async (dish, token) => {
+    const isDelete = await deleteDish(dish, token);
+    if (isDelete == true)
+      setDatas((prev) => prev.filter((elmt) => elmt.idDish != dish.idDish));
+  };
+
   return {
     datas: datas,
     getDishList: useCallback(getDishList, []),
-    updateDishList: updateDishList,
+    //updateDishList: updateDishList,
+    createDish: createDish,
+    deleteDish: delDish,
   };
 }
