@@ -109,7 +109,6 @@ export function useDishList() {
   return {
     datas: datas,
     getDishList: useCallback(getDishList, []),
-    //updateDishList: updateDishList,
     createDish: createDish,
     deleteDish: delDish,
   };
