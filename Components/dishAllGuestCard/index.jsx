@@ -29,7 +29,7 @@ export default function DishAllGuestCard() {
       <Card className={styles.card}>
         <CardHeader
           className={styles.cardHeaderSimple}
-          title="Partcicipation des autres invité(e)s"
+          title="Partcicipation des autres invit&apos(e)s"
           titleTypographyProps={cardHeaderTitleTypographyProps}
         />
       </Card>
@@ -79,7 +79,7 @@ export default function DishAllGuestCard() {
     <Card className={styles.card}>
       <CardHeader
         className={styles.cardHeader}
-        title="Partcicipation des autres invité(e)s"
+        title="Partcicipation des autres invit&apos(e)s"
         titleTypographyProps={cardHeaderTitleTypographyProps}
       />
       <CardContent className={styles.cardContent}>
