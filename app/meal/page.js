@@ -1,5 +1,4 @@
-import MealCard from "@/Components/MealCard";
-import { Grid } from "@mui/material";
+import MealCards from "@/Components/mealCards";
 import dynamic from "next/dynamic";
 
 const ConnectionRootCard = dynamic(
@@ -17,12 +16,7 @@ export default function Meal() {
         ci-dessous vous allez particper.
       </div>
       <ConnectionRootCard>
-        <Grid container spacing={2}>
-          <Grid item xs={12} md={12}>
-            <MealCard />
-          </Grid>
-          <Grid item xs={12} md={12}></Grid>
-        </Grid>
+        <MealCards />
       </ConnectionRootCard>
     </>
   );

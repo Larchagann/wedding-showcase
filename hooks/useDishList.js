@@ -61,37 +61,6 @@ export function useDishList() {
       });
   };
 
-  const updateDishList = async (dataList, token) => {
-    let isOk = true;
-    const oldData = datas;
-    const createList = dataList.filter(
-      (item) => item.idDish == null || item.idDish == undefined
-    );
-    const deleteList = datas.filter((item) => {
-      const isFind = dataList.find((dish) => {
-        return item.idDish == dish.idDish;
-      });
-      return !isFind;
-    });
-    if (createList.length > 0) {
-      for (let item of createList) {
-        const newData = await postDish(item, token);
-        if (newData != false) oldData.push(newData);
-        else isOk = false;
-      }
-    }
-    if (deleteList.length > 0) {
-      for (let item of deleteList) {
-        const isDelete = await deleteDish(item, token);
-        if (isDelete == true)
-          oldData.filter((elmt) => elmt.idDish != item.idDish);
-        else isOk = false;
-      }
-    }
-    setDatas(oldData);
-    return isOk;
-  };
-
   const createDish = async (dish, token) => {
     const newData = await postDish(dish, token);
     if (newData != false) {
